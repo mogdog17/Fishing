@@ -43,16 +43,16 @@ public class Meetings extends AppCompatActivity
 //position-int: The position of the view in the adapter.
 //parent-: The AdapterView where the click happened.
 
-                final ListView M=(ListView)findViewById(R.id.list);
+                final ListView MyListView=(ListView)findViewById(R.id.list);
                 final Dialog dialog = new Dialog(context);
-                //static int j=M.get;
+                TextView[] textViewArray = new TextView[MyListView.getLastVisiblePosition()];
+                TextView  text = (TextView) dialog.findViewById(R.id.textViewDetiled);// define textview of detiled window
 
                 dialog.setContentView(R.layout.custom);// connect the detiled layout with the dialog
-                TextView text = (TextView) dialog.findViewById(R.id.textViewDetiled);// define textview of detiled window
-                text.setText(Dataset.DetilesDB.get(M.getLastVisiblePosition()));//any click!!  set text in the textview of the detiled window
+                text.setText(Dataset.DetilesDB.get(    );//any click!!  set text in the textview of the detiled window
                 dialog.show();
-               int itemPosition = position;
-               String itemValue = (String)listView.getItemAtPosition(j++);
+               //int itemPosition = position;
+              // String itemValue = (String)listView.getItemAtPosition(M.getLastVisiblePosition());
             }
         });
 

@@ -18,53 +18,22 @@ import java.util.List;
  * Created by Almog on 09/05/2016.
  */
 
-
 public class Dataset {
-    static List<String> TitleDB = new ArrayList<>();
-    static List<String> DetilesDB = new ArrayList<>();
-    static int i = 0;
-    static int counter;
 
-    public static void add(String value)
-    {
-        TitleDB.add(i, value);
+    private String title;
+    private String details;
+
+    public Dataset(String title, String details){
+        this.title = title;
+        this.details = details;
     }
 
-    public static void addToDialog(String value) {
-        DetilesDB.add(i, value);
-        i++;
-        counter=i;
+    public String getTitle() {
+        return title;
     }
 
-    public static int GetI()
-    {
-        return counter;
+    public String getDetails() {
+        return details;
     }
-
-
 }
 
-/*
-
-    public static void add(String value)// functio static cous i static?
-    {
-        MeetingList Temp=new MeetingList();
-        Temp->next=0;
-        Temp.message=value;
-        header-> next=Temp
-        counterOfSets++;
-    }
-    class MeetingList
-    {
-        String Message;
-        int *next;
-    };
-    static int counterOfSets = 0;
-    MeetingList header=new MeetingList();
-
-//        for (int j = 0; j < i; j++)
-//        {
-//            Dataset.add(i - j, MeetingsDB.get(i - j));// add meeting to mydataset
-//        }
-    }
-*/

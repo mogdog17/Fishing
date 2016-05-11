@@ -3,27 +3,22 @@ package com.example.almog.fishing;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
+import java.io.Serializable;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity
 {
 
-    ListView listView ;
+    ArrayList<Dataset> dataset = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -31,23 +26,23 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-       final EditText name=(EditText)findViewById(R.id.Name);
-       final EditText Area=(EditText)findViewById(R.id.Area);
-       final Spinner Style=(Spinner)findViewById(R.id.spinner);
-             Button SendButton=(Button)findViewById(R.id.SendButton);
+        final EditText name=(EditText)findViewById(R.id.Name);
+        final EditText Area=(EditText)findViewById(R.id.Area);
+        final Spinner Style=(Spinner)findViewById(R.id.spinner);
+        Button SendButton=(Button)findViewById(R.id.SendButton);
         final EditText MeetingString=(EditText)findViewById(R.id.Dialog);
-        final Intent intent = new Intent(this,Meetings.class);//why final?
+        final Intent intent = new Intent(this,Meetings.class);
 
-        SendButton.setOnClickListener(new View.OnClickListener() //the second way!
-        {
+
+        SendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DateFormat df = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
-                String d = df.format(Calendar.getInstance().getTime());
-                String title = name.getText().toString() + " מעוניין לצאת לדוג באיזור " + Area.getText().toString() + " בשיטת דייג " + Style.getSelectedItem().toString() +  " ."+      " פורסם ב:"+      " " +d;
+                DateFormat dayFormat = new SimpleDateFormat("dd.MM.yyyy, HH:mm");
+                String timeNow = dayFormat.format(Calendar.getInstance().getTime());
+                String title = name.getText().toString() + " מעוניין לצאת לדוג באיזור " + Area.getText().toString() + " בשיטת דייג " + Style.getSelectedItem().toString() + " ." + " פורסם ב:" + " " + timeNow;
 
-                Dataset.add(title);// add what written in the editText, to the DB
-                Dataset.addToDialog(MeetingString.getText().toString());// add what written in the editText, to the DB
+                dataset.add(new Dataset(title, MeetingString.getText().toString()));
+                intent.putExtra("dataset", (Serializable) dataset);
                 startActivity(intent);
             }
         });

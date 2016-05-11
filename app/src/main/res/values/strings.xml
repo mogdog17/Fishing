@@ -1,0 +1,20 @@
+
+<resources>
+    String meeting;
+
+    <string name="app_name">Fishing</string>
+
+    <string-array name="FishingStyleArray">
+        <item>בוס</item>
+        <item>פתיון</item>
+        <item>זרזור</item>
+        <item>גיג</item>
+        <item>דייג בצלילה</item>
+        <item>בולוס</item>
+        <item>מיציאה בסירה</item>
+        <item>catch AND release</item>
+        <item>אחר</item>
+
+    </string-array>
+
+</resources>

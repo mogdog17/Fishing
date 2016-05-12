@@ -17,8 +17,9 @@ import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity
 {
-
-    ArrayList<Dataset> dataset = new ArrayList<>();
+    static int i=0;
+    Dataset dataset;
+    ArrayList<Dataset> set = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -41,8 +42,11 @@ public class MainActivity extends AppCompatActivity
                 String timeNow = dayFormat.format(Calendar.getInstance().getTime());
                 String title = name.getText().toString() + " מעוניין לצאת לדוג באיזור " + Area.getText().toString() + " בשיטת דייג " + Style.getSelectedItem().toString() + " ." + " פורסם ב:" + " " + timeNow;
 
-                dataset.add(new Dataset(title, MeetingString.getText().toString()));
-                intent.putExtra("dataset", (Serializable) dataset);
+                set.add(i, dataset=new Dataset(title, MeetingString.getText().toString()));// add dataset to the i's place int the ArrayList<Dataset>, will be advanced each click.
+
+                dataset.setDataset(set.get(i++));//
+
+                //intent.putExtra("dataset", (Serializable) dataset);
                 startActivity(intent);
             }
         });

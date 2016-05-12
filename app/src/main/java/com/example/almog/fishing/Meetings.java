@@ -6,25 +6,24 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-
 import java.util.ArrayList;
-
 import android.app.Dialog;
 import android.content.Context;
 import android.widget.TextView;
 public class Meetings extends AppCompatActivity
 {
-
     ListView listView ;
     final Context context = this;
     private ArrayList<Dataset> dataset;
-
+    private Dataset meetset;
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meetings);
-        Intent intent = getIntent();
-        dataset = (ArrayList<Dataset>) intent.getSerializableExtra("dataset");
+
+        meetset= meetset.getDataset(); // recieved informtion from the intent, my idea, working on it
+
+        //dataset = (ArrayList<Dataset>) intent.getSerializableExtra("dataset");
         listView = (ListView) findViewById(R.id.list);
 
         ArrayList<String> titles = new ArrayList<>();

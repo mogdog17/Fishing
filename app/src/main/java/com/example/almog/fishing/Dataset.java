@@ -19,11 +19,12 @@ import java.util.List;
  */
 
 public class Dataset {
-
+    static int i = 0;
     private String title;
     private String details;
+    private Dataset dataset;
 
-    public Dataset(String title, String details){
+    public Dataset(String title, String details) {
         this.title = title;
         this.details = details;
     }
@@ -35,5 +36,16 @@ public class Dataset {
     public String getDetails() {
         return details;
     }
+
+    public void setDataset(Dataset ) {
+        this.dataset = dataset;
+    }
+
+    public Dataset getDataset()
+    {
+        return dataset;
+    }
+
+
 }
 

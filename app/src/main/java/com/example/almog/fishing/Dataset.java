@@ -14,9 +14,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Almog on 09/05/2016.
- */
 
 public class Dataset {
     static int i = 0;
@@ -37,7 +34,7 @@ public class Dataset {
         return details;
     }
 
-    public void setDataset(Dataset ) {
+    public void setDataset(Dataset dataset ) {
         this.dataset = dataset;
     }
 

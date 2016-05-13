@@ -14,21 +14,22 @@ public class Meetings extends AppCompatActivity
 {
     ListView listView ;
     final Context context = this;
-    private ArrayList<Dataset> dataset;
-    private Dataset meetset;
+    private ArrayList<Dataset> datasetArray;
+    Dataset dataset;//it has to be the same varaiable as in mainActivity
+
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meetings);
 
-        meetset= meetset.getDataset(); // recieved informtion from the intent, my idea, working on it
+        dataset= dataset.getDataset(); // recieved informtion from the intent, my idea, working on it
 
-        //dataset = (ArrayList<Dataset>) intent.getSerializableExtra("dataset");
+        //datasetArray = (ArrayList<datasetArray>) intent.getSerializableExtra("datasetArray");
         listView = (ListView) findViewById(R.id.list);
 
         ArrayList<String> titles = new ArrayList<>();
         ArrayAdapter<Dataset> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                dataset);
+                datasetArray);
         listView.setAdapter(adapter);
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener()
@@ -46,7 +47,7 @@ public class Meetings extends AppCompatActivity
             TextView  text = (TextView) dialog.findViewById(R.id.textViewDetiled);// define textview of detiled window
 
             dialog.setContentView(R.layout.custom);// connect the detiled layout with the dialog
-            text.setText(dataset.get(position).getDetails());//any click!!  set text in the textview of the detiled window
+            text.setText(datasetArray.get(position).getDetails());//any click!!  set text in the textview of the detiled window
             dialog.show();
            //int itemPosition = position;
           // String itemValue = (String)listView.getItemAtPosition(M.getLastVisiblePosition());
